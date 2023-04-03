@@ -28,7 +28,7 @@ CREATE TABLE [dbo].[Book] (
     [PubID] [int] NOT NULL,
     [CatID] [int] NOT NULL,
     [BookTitle] [varchar] (20) NOT NULL,
-    [BookID] [int] NULL,
+    [BookDescription] [varchar](50) NULL,
     [PubDate] [date] NULL,
     CONSTRAINT [PK_Book] PRIMARY KEY ([ISBN]),
     CONSTRAINT [FK_Publisher] FOREIGN KEY ([PubID]) REFERENCES [dbo].[Publisher]([PubID]),
@@ -71,9 +71,9 @@ CREATE TABLE [dbo].[BookLoans] (
     [ISBN] [varchar](10) NOT NULL,
     [BranchID] [int] NOT NULL,
     [CardNO] [int] NOT NULL,
-    [BorrowedDate] [date2] NOT NULL,
-    [DueDate] [date2] NOT NULL,
-    [ReturnedDate] [date2] NOT NULL,
+    [BorrowedDate] [datetime2] NOT NULL,
+    [DueDate] [datetime2] NOT NULL,
+    [ReturnedDate] [datetime2] NULL,
     [Status] [char](1) NULL,
     CONSTRAINT [PK_BookLoans] PRIMARY KEY ([LoanID]),
     CONSTRAINT [FK_Book] FOREIGN KEY ([ISBN]) REFERENCES [dbo].[Book]([ISBN]),
@@ -141,5 +141,10 @@ CREATE TABLE [dbo].[ArchiveTable] (
     [ReturnedDate] [date2] NOT NULL,
     [FineID] [int] NOT NULL, 
     [FineAmmount] [money] NOT NULL,
+    CONSTRAINT [PK_ArchiveTable] PRIMARY KEY ([ArchiveID]),
+    CONSTRAINT [FK_Archive_Book] FOREIGN KEY ([ISBN]) REFERENCES [dbo].[Book]([ISBN]),
+    CONSTRAINT [FK_Archive_LibraryBranch] FOREIGN KEY ([BranchID]) REFERENCES [dbo].[LibraryBranch]([BranchID]),
+    CONSTRAINT [FK_Archive_Borrower] FOREIGN KEY ([CardNO]) REFERENCES [dbo].[Borrower]([CardNO]),
+    CONSTRAINT [FK_Archive_Fine] FOREIGN KEY ([FineID]) REFERENCES [dbo].[Fine]([FineID])
 )
 GO
