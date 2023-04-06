@@ -11,8 +11,8 @@ USE [LibraryManagmentSystem]
 /****** Object:  Table [dbo].[Publisher]    Script Date: 03/04/2023 ******/
 CREATE TABLE [dbo].[Publisher](
     [PubID] [int] IDENTITY(1,1) NOT NULL,
-    [PubLastName] [varchar](50) NULL,
-    [PubFirstName] [varchar](50) NULL,
+    [PubName] [varchar](50) NULL,
+    [PubContact] [varchar](50) NULL,
     [PubAddress] [varchar](50)  NULL,
     [PubCity] [varchar](50) NULL,
     [PubState] [char](2) NULL,
@@ -21,6 +21,17 @@ CREATE TABLE [dbo].[Publisher](
     CONSTRAINT [PK_Publisher] PRIMARY KEY ([PubID])
 )
 GO
+
+INSERT [dbo].[Publisher] ([PubName], [PubContact], [PubAddress], [PubCity], [PubState], [PubZIP], [PubPhone]) 
+                 VALUES ('PRINTING IS US','TOMMIE SEYMOUR','1201 ORANGE AVE', 'SEATTLE', 'WA', '98114', '000-714-8321');
+INSERT [dbo].[Publisher] ([PubName], [PubContact], [PubAddress], [PubCity], [PubState], [PubZIP], [PubPhone]) 
+                 VALUES ('PUBLISH OUR WAY','JANE TOMLIN','114 EAST SAVANNAH', 'ATLANTA', 'GA', '30314', '010-410-0010'); 
+INSERT [dbo].[Publisher] ([PubName], [PubContact], [PubAddress], [PubCity], [PubState], [PubZIP], [PubPhone]) 
+                 VALUES ('AMERICAN PUBLISHING', 'DAVID DAVIDSON','58 TILA CIRCLE', 'CHICAGO', 'IL', '60605', '800-555-1211');
+INSERT [dbo].[Publisher] ([PubName], [PubContact], [PubAddress], [PubCity], [PubState], [PubZIP], [PubPhone])  
+                 VALUES ('READING MATERIALS INC.','RENEE SMITH','958 MAGNOLIA LANE', 'EASTPOINT', 'FL', '32328', '800-555-9743');
+INSERT [dbo].[Publisher] ([PubName], [PubContact], [PubAddress], [PubCity], [PubState], [PubZIP], [PubPhone]) 
+                 VALUES ('REED-N-RITE','SEBASTIAN JONES','561 ROUNDABOUT WAY', 'TRENTON', 'NJ', '08601','800-555-8284');
 
 /****** Object:  Table [dbo].[Book]    Script Date: 03/04/2023 ******/
 CREATE TABLE [dbo].[Book] (
