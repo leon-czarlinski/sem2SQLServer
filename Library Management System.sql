@@ -22,9 +22,19 @@ CREATE TABLE [dbo].[Publisher](
 )
 GO
 
+/****** Object: Table [dbo].[Category] Script Date: 03/04/2023 ******/
+CREATE TABLE [dbo].[Category] (
+[CatID] [int] IDENTITY(1,1) NOT NULL,
+[CatName] varchar(50) NULL,
+[CatDescription] varchar(max) NULL,
+[CatType] [varchar](50)  NULL,
+CONSTRAINT [PK_Category] PRIMARY KEY ([CatID]),
+)
+GO
+
 /****** Object: Table [dbo].[Book] Script Date: 03/04/2023 ******/
 CREATE TABLE [dbo].[Book] (
-[ISBN] varchar(10) NOT NULL,
+[ISBN] varchar(15) NOT NULL,
 [PubID] [int] NOT NULL,
 [CatID] [int] NOT NULL,
 [BookTitle] varchar (50) NOT NULL,
@@ -50,46 +60,17 @@ GO
 /****** Object: Table [dbo].[BookAuthor] Script Date: 03/04/2023 ******/
 CREATE TABLE [dbo].[BookAuthor] (
 [AuthorID] [int] NOT NULL,
-[ISBN] varchar(10) NOT NULL,
+[ISBN] varchar(15) NOT NULL,
 CONSTRAINT [PK_BookAuthor] PRIMARY KEY ([AuthorID], [ISBN]),
 CONSTRAINT [FK_Book] FOREIGN KEY ([ISBN]) REFERENCES [dbo].[Book]([ISBN]),
 CONSTRAINT [FK_Author] FOREIGN KEY ([AuthorID]) REFERENCES [dbo].[Author]([AuthorID])
 )
 GO
 
-
-/****** Object: Table [dbo].[Category] Script Date: 03/04/2023 ******/
-CREATE TABLE [dbo].[Category] (
-[CatID] [int] IDENTITY(1,1) NOT NULL,
-[CatName] varchar(50) NULL,
-[CatDescription] varchar(max) NULL,
-[CatType] [varchar](50)  NULL,
-CONSTRAINT [PK_Category] PRIMARY KEY ([CatID]),
-)
-GO
-
-
-/****** Object: Table [dbo].[BookLoans] Script Date: 03/04/2023 ******/
-CREATE TABLE [dbo].[BookLoans] (
-[LoanID] [int] IDENTITY(1,1) NOT NULL,
-[ISBN] varchar (10) NOT NULL,
-[BranchID] [int] NOT NULL,
-[CardNo] [int] NOT NULL,
-[BorrowedDate] [datetime2] NOT NULL,
-[DueDate] [datetime2] NOT NULL,
-[ReturnedDate] [datetime2] NULL,
-[Status] char (1) NULL,
-CONSTRAINT [PK_BookLoans] PRIMARY KEY ([LoanID]),
-CONSTRAINT [FK_Book] FOREIGN KEY ([ISBN]) REFERENCES [dbo].[Book]([ISBN]),
-CONSTRAINT [FK_LibraryBranch] FOREIGN KEY ([BranchID]) REFERENCES [dbo].[LibraryBranch]([BranchID]),
-CONSTRAINT [FK_Borrower] FOREIGN KEY ([CardNo]) REFERENCES [dbo].[Borrower]([CardNo]),
-)
-GO
-
 /****** Object:  Table [dbo].[LibraryBranch]    Script Date: 03/04/2023 ******/
 CREATE TABLE [dbo].[LibraryBranch] (
     [BranchID] [int] IDENTITY(1,1) NOT NULL,
-    [BrachName] [varchar](50) NULL,
+    [BranchName] [varchar](50) NULL,
     [BranchAddress] [varchar](50)  NULL,
     [BranchCity] [varchar](50) NULL,
     [BranchState] [char](2) NULL,
@@ -112,15 +93,36 @@ CREATE TABLE [dbo].[Borrower](
 )
 GO
 
+
+
+/****** Object: Table [dbo].[BookLoans] Script Date: 03/04/2023 ******/
+CREATE TABLE [dbo].[BookLoans] (
+[LoanID] [int] IDENTITY(1,1) NOT NULL,
+[ISBN] varchar (15) NOT NULL,
+[BranchID] [int] NOT NULL,
+[CardNo] [int] NOT NULL,
+[BorrowedDate] [datetime2] NOT NULL,
+[DueDate] [datetime2] NOT NULL,
+[ReturnedDate] [datetime2] NULL,
+[Status] char (1) NULL,
+CONSTRAINT [PK_BookLoans] PRIMARY KEY ([LoanID]),
+CONSTRAINT [FK_BookLoans_Book] FOREIGN KEY ([ISBN]) REFERENCES [dbo].[Book]([ISBN]),
+CONSTRAINT [FK_BookLoans_LibraryBranch] FOREIGN KEY ([BranchID]) REFERENCES [dbo].[LibraryBranch]([BranchID]),
+CONSTRAINT [FK_BookLoans_Borrower] FOREIGN KEY ([CardNo]) REFERENCES [dbo].[Borrower]([CardNo])
+)
+GO
+
+
+
 /****** Object:  Table [dbo].[BookCopies]    Script Date: 03/04/2023 ******/
 CREATE TABLE [dbo].[BookCopies](
-    [ISBN] [varchar](10) NOT NULL,
+    [ISBN] [varchar](15) NOT NULL,
     [BranchID] [int] NOT NULL,
     [NumOfCopies] [int] NOT NULL,
     [Status] [varchar](15)  NOT NULL,
     CONSTRAINT [PK_BookCopies] PRIMARY KEY ([ISBN], [BranchID]),
-    CONSTRAINT [FK_Book] FOREIGN KEY ([ISBN]) REFERENCES [dbo].[Book]([ISBN]),
-    CONSTRAINT [FK_LibraryBranch] FOREIGN KEY ([BranchID]) REFERENCES [dbo].[LibraryBranch]([BranchID])
+    CONSTRAINT [FK_BookCopies_Book] FOREIGN KEY ([ISBN]) REFERENCES [dbo].[Book]([ISBN]),
+    CONSTRAINT [FK_BookCopies_LibraryBranch] FOREIGN KEY ([BranchID]) REFERENCES [dbo].[LibraryBranch]([BranchID])
 )
 GO
 
@@ -137,12 +139,12 @@ GO
 /****** Object:  Table [dbo].[ArchiveTable]    Script Date: 03/04/2023 ******/
 CREATE TABLE [dbo].[ArchiveTable] (
     [ArchiveID] [int] IDENTITY(1,1) NOT NULL,
-    [ISBN] [varchar](10) NOT NULL,
+    [ISBN] [varchar](15) NOT NULL,
     [BranchID] [int] NOT NULL,
     [CardNO] [int] NOT NULL,
-    [BorrowedDate] [date2] NOT NULL,
-    [DueDate] [date2] NOT NULL,
-    [ReturnedDate] [date2] NOT NULL,
+    [BorrowedDate] [date] NOT NULL,
+    [DueDate] [date] NOT NULL,
+    [ReturnedDate] [date] NOT NULL,
     [FineID] [int] NOT NULL, 
     [FineAmmount] [money] NOT NULL,
     CONSTRAINT [PK_ArchiveTable] PRIMARY KEY ([ArchiveID]),

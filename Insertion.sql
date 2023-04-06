@@ -31,7 +31,40 @@ INSERT INTO [dbo].[Publisher] ([PubName], [PubContact], [PubAddress], [PubCity],
 VALUES ('Wiley', 'Sarah Brown', '951 Pine St', 'Miami', 'FL', '33101', '555-8901');
 
 
--- INSERTING TO THE BOOKS TABLE
+-- INSERT INTO CATEGORY TABLE
+
+INSERT INTO [dbo].[Category] ([CatName], [CatDescription], [CatType])
+VALUES ('Fiction', 'A category for works of the imagination', 'Genre');
+
+INSERT INTO [dbo].[Category] ([CatName], [CatDescription], [CatType])
+VALUES ('Non-Fiction', 'A category for works based on facts and real events', 'Genre');
+
+INSERT INTO [dbo].[Category] ([CatName], [CatDescription], [CatType])
+VALUES ('Mystery', 'A category for works focused on solving a crime or puzzle', 'Genre');
+
+INSERT INTO [dbo].[Category] ([CatName], [CatDescription], [CatType])
+VALUES ('Science Fiction', 'A category for works based on scientific or futuristic concepts', 'Genre');
+
+INSERT INTO [dbo].[Category] ([CatName], [CatDescription], [CatType])
+VALUES ('Romance', 'A category for works centered around romantic relationships', 'Genre');
+
+INSERT INTO [dbo].[Category] ([CatName], [CatDescription], [CatType])
+VALUES ('Horror', 'A category for works focused on creating fear and suspense', 'Genre');
+
+INSERT INTO [dbo].[Category] ([CatName], [CatDescription], [CatType])
+VALUES ('Self-Help', 'A category for works focused on personal growth and improvement', 'Genre');
+
+INSERT INTO [dbo].[Category] ([CatName], [CatDescription], [CatType])
+VALUES ('History', 'A category for works focused on past events and people', 'Genre');
+
+INSERT INTO [dbo].[Category] ([CatName], [CatDescription], [CatType])
+VALUES ('Biography', 'A category for works focused on the life of an individual', 'Genre');
+
+INSERT INTO [dbo].[Category] ([CatName], [CatDescription], [CatType])
+VALUES ('Business', 'A category for works focused on business and economics', 'Genre');
+
+
+-- INSERTING TO THE BOOK TABLE
 
 INSERT INTO [dbo].[Book] ([ISBN], [PubID], [CatID], [BookTitle], [BookDescription], [PubDate]) 
 VALUES ('9780802129965', 1, 1, 'The Overstory', 'A novel about trees and people', '2018-04-03');
@@ -64,173 +97,130 @@ INSERT INTO [dbo].[Book] ([ISBN], [PubID], [CatID], [BookTitle], [BookDescriptio
 VALUES ('9780143108252', 10, 2, 'A Brief History of Seven Killings', 'A novel about Jamaica in the 1970s', '2014-10-02');
 
 
+-- INSERT INTO AUTHOR TABLE
 
--- INSERT INTO CATEGORIES TABLE
-
-INSERT INTO [dbo].[Categories] ([CategoryName], [CategoryDescription], [CategoryType])
-VALUES ('Fiction', 'A category for works of the imagination', 'Genre');
-
-INSERT INTO [dbo].[Categories] ([CategoryName], [CategoryDescription], [CategoryType])
-VALUES ('Non-Fiction', 'A category for works based on facts and real events', 'Genre');
-
-INSERT INTO [dbo].[Categories] ([CategoryName], [CategoryDescription], [CategoryType])
-VALUES ('Mystery', 'A category for works focused on solving a crime or puzzle', 'Genre');
-
-INSERT INTO [dbo].[Categories] ([CategoryName], [CategoryDescription], [CategoryType])
-VALUES ('Science Fiction', 'A category for works based on scientific or futuristic concepts', 'Genre');
-
-INSERT INTO [dbo].[Categories] ([CategoryName], [CategoryDescription], [CategoryType])
-VALUES ('Romance', 'A category for works centered around romantic relationships', 'Genre');
-
-INSERT INTO [dbo].[Categories] ([CategoryName], [CategoryDescription], [CategoryType])
-VALUES ('Horror', 'A category for works focused on creating fear and suspense', 'Genre');
-
-INSERT INTO [dbo].[Categories] ([CategoryName], [CategoryDescription], [CategoryType])
-VALUES ('Self-Help', 'A category for works focused on personal growth and improvement', 'Genre');
-
-INSERT INTO [dbo].[Categories] ([CategoryName], [CategoryDescription], [CategoryType])
-VALUES ('History', 'A category for works focused on past events and people', 'Genre');
-
-INSERT INTO [dbo].[Categories] ([CategoryName], [CategoryDescription], [CategoryType])
-VALUES ('Biography', 'A category for works focused on the life of an individual', 'Genre');
-
-INSERT INTO [dbo].[Categories] ([CategoryName], [CategoryDescription], [CategoryType])
-VALUES ('Business', 'A category for works focused on business and economics', 'Genre');
+INSERT INTO [dbo].[Author] ([AuthorLastName], [AuthorFirstName]) VALUES ('Smith', 'John');
+INSERT INTO [dbo].[Author] ([AuthorLastName], [AuthorFirstName]) VALUES ('Lee', 'Jessica');
+INSERT INTO [dbo].[Author] ([AuthorLastName], [AuthorFirstName]) VALUES ('Garcia', 'Manuel');
+INSERT INTO [dbo].[Author] ([AuthorLastName], [AuthorFirstName]) VALUES ('Nguyen', 'Thi');
+INSERT INTO [dbo].[Author] ([AuthorLastName], [AuthorFirstName]) VALUES ('Miller', 'David');
+INSERT INTO [dbo].[Author] ([AuthorLastName], [AuthorFirstName]) VALUES ('Wang', 'Hui');
+INSERT INTO [dbo].[Author] ([AuthorLastName], [AuthorFirstName]) VALUES ('Gupta', 'Raj');
+INSERT INTO [dbo].[Author] ([AuthorLastName], [AuthorFirstName]) VALUES ('Kim', 'Yun');
+INSERT INTO [dbo].[Author] ([AuthorLastName], [AuthorFirstName]) VALUES ('Patel', 'Priya');
+INSERT INTO [dbo].[Author] ([AuthorLastName], [AuthorFirstName]) VALUES ('Chen', 'Wei');
 
 
+-- INSERT INTO BOOK AUTHOR TABLE
+
+INSERT INTO [dbo].[BookAuthor] ([AuthorID], [ISBN]) VALUES (1, '9780802129965');
+INSERT INTO [dbo].[BookAuthor] ([AuthorID], [ISBN]) VALUES (2, '9780735211286');
+INSERT INTO [dbo].[BookAuthor] ([AuthorID], [ISBN]) VALUES (3, '9780143109082');
+INSERT INTO [dbo].[BookAuthor] ([AuthorID], [ISBN]) VALUES (4, '9780385543781');
+INSERT INTO [dbo].[BookAuthor] ([AuthorID], [ISBN]) VALUES (5, '9780525434194');
+INSERT INTO [dbo].[BookAuthor] ([AuthorID], [ISBN]) VALUES (6, '9780525563542');
+INSERT INTO [dbo].[BookAuthor] ([AuthorID], [ISBN]) VALUES (7, '9780316463998');
+INSERT INTO [dbo].[BookAuthor] ([AuthorID], [ISBN]) VALUES (8, '9780593299597');
+INSERT INTO [dbo].[BookAuthor] ([AuthorID], [ISBN]) VALUES (9, '9780062896433');
+INSERT INTO [dbo].[BookAuthor] ([AuthorID], [ISBN]) VALUES (10, '9780143108252');
 
 -- INSERT INTO LIBRARY BRANCH TABLE
 
+INSERT INTO [dbo].[LibraryBranch] ([BranchName], [BranchAddress], [BranchCity], [BranchState], [BranchZIP]) 
+VALUES ('Central Library', '101 Main Street', 'Anytown', 'CA', '12345');
 
-INSERT INTO [dbo].[LibraryBranch] ([BranchName], [Address], [City], [State], [ZIP], [Region]) 
-VALUES ('Central Library', '101 Main Street', 'Anytown', 'CA', '12345', 'West');
+INSERT INTO [dbo].[LibraryBranch] ([BranchName], [BranchAddress], [BranchCity], [BranchState], [BranchZIP]) 
+VALUES ('North Branch', '555 1st Avenue', 'Smallville', 'NY', '67890');
 
-INSERT INTO [dbo].[LibraryBranch] ([BranchName], [Address], [City], [State], [ZIP], [Region]) 
-VALUES ('North Branch', '555 1st Avenue', 'Smallville', 'NY', '67890', 'Northeast');
+INSERT INTO [dbo].[LibraryBranch] ([BranchName], [BranchAddress], [BranchCity], [BranchState], [BranchZIP]) 
+VALUES ('South Branch', '123 2nd Street', 'Big City', 'TX', '45678');
 
-INSERT INTO [dbo].[LibraryBranch] ([BranchName], [Address], [City], [State], [ZIP], [Region]) 
-VALUES ('South Branch', '123 2nd Street', 'Big City', 'TX', '45678', 'Southwest');
+INSERT INTO [dbo].[LibraryBranch] ([BranchName], [BranchAddress], [BranchCity], [BranchState], [BranchZIP]) 
+VALUES ('West Branch', '456 3rd Avenue', 'Suburbia', 'IL', '78901');
 
-INSERT INTO [dbo].[LibraryBranch] ([BranchName], [Address], [City], [State], [ZIP], [Region]) 
-VALUES ('West Branch', '456 3rd Avenue', 'Suburbia', 'IL', '78901', 'Midwest');
+INSERT INTO [dbo].[LibraryBranch] ([BranchName], [BranchAddress], [BranchCity], [BranchState], [BranchZIP]) 
+VALUES ('East Branch', '789 4th Street', 'Metropolis', 'GA', '23456');
 
-INSERT INTO [dbo].[LibraryBranch] ([BranchName], [Address], [City], [State], [ZIP], [Region]) 
-VALUES ('East Branch', '789 4th Street', 'Metropolis', 'GA', '23456', 'Southeast');
+INSERT INTO [dbo].[LibraryBranch] ([BranchName], [BranchAddress], [BranchCity], [BranchState], [BranchZIP]) 
+VALUES ('Downtown Branch', '321 5th Avenue', 'Smalltown', 'OH', '56789');
 
-INSERT INTO [dbo].[LibraryBranch] ([BranchName], [Address], [City], [State], [ZIP], [Region]) 
-VALUES ('Downtown Branch', '321 5th Avenue', 'Smalltown', 'OH', '56789', 'Great Lakes');
+INSERT INTO [dbo].[LibraryBranch] ([BranchName], [BranchAddress], [BranchCity], [BranchState], [BranchZIP]) 
+VALUES ('Northwest Branch', '999 6th Street', 'Cityville', 'WA', '34567');
 
-INSERT INTO [dbo].[LibraryBranch] ([BranchName], [Address], [City], [State], [ZIP], [Region]) 
-VALUES ('Northwest Branch', '999 6th Street', 'Cityville', 'WA', '34567', 'Pacific Northwest');
+INSERT INTO [dbo].[LibraryBranch] ([BranchName], [BranchAddress], [BranchCity], [BranchState], [BranchZIP]) 
+VALUES ('Northeast Branch', '888 7th Avenue', 'Village', 'MA', '45678');
 
-INSERT INTO [dbo].[LibraryBranch] ([BranchName], [Address], [City], [State], [ZIP], [Region]) 
-VALUES ('Northeast Branch', '888 7th Avenue', 'Village', 'MA', '45678', 'New England');
+INSERT INTO [dbo].[LibraryBranch] ([BranchName], [BranchAddress], [BranchCity], [BranchState], [BranchZIP]) 
+VALUES ('Southwest Branch', '777 8th Street', 'Hometown', 'AZ', '23456');
 
-INSERT INTO [dbo].[LibraryBranch] ([BranchName], [Address], [City], [State], [ZIP], [Region]) 
-VALUES ('Southwest Branch', '777 8th Street', 'Hometown', 'AZ', '23456', 'Mountain');
-
-INSERT INTO [dbo].[LibraryBranch] ([BranchName], [Address], [City], [State], [ZIP], [Region]) 
-VALUES ('Southeast Branch', '666 9th Avenue', 'Hamlet', 'NC', '34567', 'Southeast');
+INSERT INTO [dbo].[LibraryBranch] ([BranchName], [BranchAddress], [BranchCity], [BranchState], [BranchZIP]) 
+VALUES ('Southeast Branch', '666 9th Avenue', 'Hamlet', 'NC', '34567');
 
 
 -- INSERT INTO BORROWER TABLE
 
-INSERT INTO [dbo].[Borrower] ([BorrowerLName], [BorrowerFName], [Address], [City], [State], [ZIP], [Region], [Phone])
-VALUES ('Mike', 'John', '123 Main St', 'Anytown', 'CA', '12345', 'West', '555-1234');
+INSERT INTO [dbo].[Borrower] ([BorrowerLName], [BorrowerFName], [BorrowerAddress], [BorrowerCity], [BorrowerState], [BorrowerZIP], [BorrowerPhone])
+VALUES ('Mike', 'John', '123 Main St', 'Anytown', 'CA', '12345', '555-1234');
 
-INSERT INTO [dbo].[Borrower] ([BorrowerLName], [BorrowerFName], [Address], [City], [State], [ZIP], [Region], [Phone])
-VALUES ('Jones', 'Sara', '456 Oak Ave', 'Smallville', 'NY', '67890', 'Northeast', '555-5678');
+INSERT INTO [dbo].[Borrower] ([BorrowerLName], [BorrowerFName], [BorrowerAddress], [BorrowerCity], [BorrowerState], [BorrowerZIP], [BorrowerPhone])
+VALUES ('Jones', 'Sara', '456 Oak Ave', 'Smallville', 'NY', '67890', '555-5678');
 
-INSERT INTO [dbo].[Borrower] ([BorrowerLName], [BorrowerFName], [Address], [City], [State], [ZIP], [Region], [Phone])
-VALUES ('Davis', 'Michael', '789 Maple St', 'Big City', 'TX', '45678', 'Southwest', '555-9876');
+INSERT INTO [dbo].[Borrower] ([BorrowerLName], [BorrowerFName], [BorrowerAddress], [BorrowerCity], [BorrowerState], [BorrowerZIP], [BorrowerPhone])
+VALUES ('Davis', 'Michael', '789 Maple St', 'Big City', 'TX', '45678', '555-9876');
 
-INSERT INTO [dbo].[Borrower] ([BorrowerLName], [BorrowerFName], [Address], [City], [State], [ZIP], [Region], [Phone])
-VALUES ('Lee', 'Jin', '321 6th St', 'Suburbia', 'IL', '78901', 'Midwest', '555-2345');
+INSERT INTO [dbo].[Borrower] ([BorrowerLName], [BorrowerFName], [BorrowerAddress], [BorrowerCity], [BorrowerState], [BorrowerZIP], [BorrowerPhone])
+VALUES ('Lee', 'Jin', '321 6th St', 'Suburbia', 'IL', '78901', '555-2345');
 
-INSERT INTO [dbo].[Borrower] ([BorrowerLName], [BorrowerFName], [Address], [City], [State], [ZIP], [Region], [Phone])
-VALUES ('Garcia', 'Maria', '654 Elm St', 'Metropolis', 'GA', '23456', 'Southeast', '555-6789');
+INSERT INTO [dbo].[Borrower] ([BorrowerLName], [BorrowerFName], [BorrowerAddress], [BorrowerCity], [BorrowerState], [BorrowerZIP], [BorrowerPhone])
+VALUES ('Garcia', 'Maria', '654 Elm St', 'Metropolis', 'GA', '23456', '555-6789');
 
-INSERT INTO [dbo].[Borrower] ([BorrowerLName], [BorrowerFName], [Address], [City], [State], [ZIP], [Region], [Phone])
-VALUES ('Chen', 'Wei', '987 Cedar Ave', 'Smalltown', 'OH', '56789', 'Great Lakes', '555-3456');
+INSERT INTO [dbo].[Borrower] ([BorrowerLName], [BorrowerFName], [BorrowerAddress], [BorrowerCity], [BorrowerState], [BorrowerZIP], [BorrowerPhone])
+VALUES ('Chen', 'Wei', '987 Cedar Ave', 'Smalltown', 'OH', '56789', '555-3456');
 
-INSERT INTO [dbo].[Borrower] ([BorrowerLName], [BorrowerFName], [Address], [City], [State], [ZIP], [Region], [Phone])
-VALUES ('Kim', 'Soo-Jin', '159 Pine St', 'Cityville', 'WA', '34567', 'Pacific Northwest', '555-7890');
+INSERT INTO [dbo].[Borrower] ([BorrowerLName], [BorrowerFName], [BorrowerAddress], [BorrowerCity], [BorrowerState], [BorrowerZIP], [BorrowerPhone])
+VALUES ('Kim', 'Soo-Jin', '159 Pine St', 'Cityville', 'WA', '34567', '555-7890');
 
-INSERT INTO [dbo].[Borrower] ([BorrowerLName], [BorrowerFName], [Address], [City], [State], [ZIP], [Region], [Phone])
-VALUES ('Wang', 'Ling', '753 Oak Ln', 'Village', 'MA', '45678', 'New England', '555-2341');
+INSERT INTO [dbo].[Borrower] ([BorrowerLName], [BorrowerFName], [BorrowerAddress], [BorrowerCity], [BorrowerState], [BorrowerZIP], [BorrowerPhone])
+VALUES ('Wang', 'Ling', '753 Oak Ln', 'Village', 'MA', '45678', '555-2341');
 
-INSERT INTO [dbo].[Borrower] ([BorrowerLName], [BorrowerFName], [Address], [City], [State], [ZIP], [Region], [Phone])
-VALUES ('Gomez', 'Carlos', '951 Maple Ave', 'Hometown', 'AZ', '23456', 'Mountain', '555-8765');
+INSERT INTO [dbo].[Borrower] ([BorrowerLName], [BorrowerFName], [BorrowerAddress], [BorrowerCity], [BorrowerState], [BorrowerZIP], [BorrowerPhone])
+VALUES ('Gomez', 'Carlos', '951 Maple Ave', 'Hometown', 'AZ', '23456', '555-8765');
 
-INSERT INTO [dbo].[Borrower] ([BorrowerLName], [BorrowerFName], [Address], [City], [State], [ZIP], [Region], [Phone])
-VALUES ('Davis', 'Emma', '456 Park Ave', 'Denver', 'CO', '80205', 'West', '303-555-6789');
+INSERT INTO [dbo].[Borrower] ([BorrowerLName], [BorrowerFName], [BorrowerAddress], [BorrowerCity], [BorrowerState], [BorrowerZIP], [BorrowerPhone])
+VALUES ('Davis', 'Emma', '456 Park Ave', 'Denver', 'CO', '80205', '303-555-6789');
 
 
-
--- INSERT INTO BOOK LOAN TABLE
-
-INSERT INTO [dbo].[BookLoans] ([ISBN], [BranchID], [CardNo], [BorrowedDate], [DueDate], [Status])
-VALUES ('9780802129965', 1, 111, '2023-04-10', '2023-05-08', 'B');
+-- INSERT INTO BOOK LOANS TABLE
 
 INSERT INTO [dbo].[BookLoans] ([ISBN], [BranchID], [CardNo], [BorrowedDate], [DueDate], [Status])
-VALUES ('9780735211286', 2, 101, '2023-04-10', '2023-04-24', 'B');
+SELECT '9780802129965', 1, [CardNo], '2023-04-10', '2023-05-08', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'John';
 
 INSERT INTO [dbo].[BookLoans] ([ISBN], [BranchID], [CardNo], [BorrowedDate], [DueDate], [Status])
-VALUES ('9780143109082', 3, 202, '2023-04-10', '2023-05-08', 'B');
+SELECT '9780735211286', 2, [CardNo], '2023-04-10', '2023-04-24', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'Sara';
 
 INSERT INTO [dbo].[BookLoans] ([ISBN], [BranchID], [CardNo], [BorrowedDate], [DueDate], [Status])
-VALUES ('9780385543781', 4, 303, '2023-04-10', '2023-04-24', 'B');
+SELECT '9780143109082', 3, [CardNo], '2023-04-10', '2023-05-08', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'Michael';
 
 INSERT INTO [dbo].[BookLoans] ([ISBN], [BranchID], [CardNo], [BorrowedDate], [DueDate], [Status])
-VALUES ('9780525434194', 5, 404, '2023-04-10', '2023-05-08', 'B');
+SELECT '9780385543781', 4, [CardNo], '2023-04-10', '2023-04-24', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'Jin';
 
 INSERT INTO [dbo].[BookLoans] ([ISBN], [BranchID], [CardNo], [BorrowedDate], [DueDate], [Status])
-VALUES ('9780525563542', 6, 505, '2023-04-10', '2023-04-24', 'B');
+SELECT '9780525434194', 5, [CardNo], '2023-04-10', '2023-05-08', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'Maria';
 
 INSERT INTO [dbo].[BookLoans] ([ISBN], [BranchID], [CardNo], [BorrowedDate], [DueDate], [Status])
-VALUES ('9780316463998', 7, 606, '2023-04-10', '2023-05-08', 'B');
+SELECT '9780525563542', 6, [CardNo], '2023-04-10', '2023-04-24', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'Wei';
 
 INSERT INTO [dbo].[BookLoans] ([ISBN], [BranchID], [CardNo], [BorrowedDate], [DueDate], [Status])
-VALUES ('9780593299597', 8, 707, '2023-04-10', '2023-04-24', 'B');
+SELECT '9780316463998', 7, [CardNo], '2023-04-10', '2023-05-08', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'Soo-Jin';
 
 INSERT INTO [dbo].[BookLoans] ([ISBN], [BranchID], [CardNo], [BorrowedDate], [DueDate], [Status])
-VALUES ('9780062896433', 9, 808, '2023-04-10', '2023-05-08', 'B');
+SELECT '9780593299597', 8, [CardNo], '2023-04-10', '2023-04-24', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'Ling';
 
 INSERT INTO [dbo].[BookLoans] ([ISBN], [BranchID], [CardNo], [BorrowedDate], [DueDate], [Status])
-VALUES ('9780143108252', 10, 909, '2023-04-10', '2023-04-24', 'B');
+SELECT '9780062896433', 9, [CardNo], '2023-04-10', '2023-05-08', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'Carlos';
 
-
--- INSERT INTO FINES TABLE
-
-INSERT INTO [dbo].[Fines] ([LoansID], [FineAmount])
-VALUES (1, 0.00);
-
-INSERT INTO [dbo].[Fines] ([LoansID], [FineAmount])
-VALUES (2, 0.00);
-
-INSERT INTO [dbo].[Fines] ([LoansID], [FineAmount])
-VALUES (3, 0.00);
-
-INSERT INTO [dbo].[Fines] ([LoansID], [FineAmount])
-VALUES (4, 0.00);
-
-INSERT INTO [dbo].[Fines] ([LoansID], [FineAmount])
-VALUES (5, 0.00);
-
-INSERT INTO [dbo].[Fines] ([LoansID], [FineAmount])
-VALUES (6, 0.00);
-
-INSERT INTO [dbo].[Fines] ([LoansID], [FineAmount])
-VALUES (7, 0.00);
-
-INSERT INTO [dbo].[Fines] ([LoansID], [FineAmount])
-VALUES (8, 0.00);
-
-INSERT INTO [dbo].[Fines] ([LoansID], [FineAmount])
-VALUES (9, 0.00);
-
-INSERT INTO [dbo].[Fines] ([LoansID], [FineAmount])
-VALUES (10, 0.00);
+INSERT INTO [dbo].[BookLoans] ([ISBN], [BranchID], [CardNo], [BorrowedDate], [DueDate], [Status])
+SELECT '9780143108252', 10, [CardNo], '2023-04-10', '2023-04-24', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'Emma';
 
 
 -- INSERT INTO BOOK COPIES TABLE
@@ -266,30 +256,8 @@ INSERT INTO [dbo].[BookCopies] ([ISBN], [BranchID], [NumOfCopies], [Status])
 VALUES ('9780143108252', 10, 1, 'Available');
 
 
--- INSERT INTO BOOK AUTHORS TABLE
+-- INSERT INTO FINES TABLE
 
-
-INSERT INTO [dbo].[BookAuthors] ([AuthorID], [ISBN]) VALUES (1, '9780802129965');
-INSERT INTO [dbo].[BookAuthors] ([AuthorID], [ISBN]) VALUES (2, '9780735211286');
-INSERT INTO [dbo].[BookAuthors] ([AuthorID], [ISBN]) VALUES (3, '9780143109082');
-INSERT INTO [dbo].[BookAuthors] ([AuthorID], [ISBN]) VALUES (4, '9780385543781');
-INSERT INTO [dbo].[BookAuthors] ([AuthorID], [ISBN]) VALUES (5, '9780525434194');
-INSERT INTO [dbo].[BookAuthors] ([AuthorID], [ISBN]) VALUES (6, '9780525563542');
-INSERT INTO [dbo].[BookAuthors] ([AuthorID], [ISBN]) VALUES (7, '9780316463998');
-INSERT INTO [dbo].[BookAuthors] ([AuthorID], [ISBN]) VALUES (8, '9780593299597');
-INSERT INTO [dbo].[BookAuthors] ([AuthorID], [ISBN]) VALUES (9, '9780062896433');
-INSERT INTO [dbo].[BookAuthors] ([AuthorID], [ISBN]) VALUES (10, '9780143108252');
-
--- INSERT INTO AUTHORS TABLE
-
-INSERT INTO [dbo].[Authors] ([AuthorLName], [AuthorFName]) VALUES ('Smith', 'John');
-INSERT INTO [dbo].[Authors] ([AuthorLName], [AuthorFName]) VALUES ('Lee', 'Jessica');
-INSERT INTO [dbo].[Authors] ([AuthorLName], [AuthorFName]) VALUES ('Garcia', 'Manuel');
-INSERT INTO [dbo].[Authors] ([AuthorLName], [AuthorFName]) VALUES ('Nguyen', 'Thi');
-INSERT INTO [dbo].[Authors] ([AuthorLName], [AuthorFName]) VALUES ('Miller', 'David');
-INSERT INTO [dbo].[Authors] ([AuthorLName], [AuthorFName]) VALUES ('Wang', 'Hui');
-INSERT INTO [dbo].[Authors] ([AuthorLName], [AuthorFName]) VALUES ('Gupta', 'Raj');
-INSERT INTO [dbo].[Authors] ([AuthorLName], [AuthorFName]) VALUES ('Kim', 'Yun');
-INSERT INTO [dbo].[Authors] ([AuthorLName], [AuthorFName]) VALUES ('Patel', 'Priya');
-INSERT INTO [dbo].[Authors] ([AuthorLName], [AuthorFName]) VALUES ('Chen', 'Wei');
+INSERT INTO [dbo].[Fine] ([LoanID], [FineAmmount])
+SELECT [LoanID], 0.00 FROM [dbo].[BookLoans] WHERE [LoanID] BETWEEN 32 AND 41; -- kindly SELECT * FROM BOOKLOANS; so that you can see the LoansID geenerated, then replace the value here (BETWEEN 32 AND 41;)
 
