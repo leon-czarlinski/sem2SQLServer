@@ -47,6 +47,8 @@ CREATE TABLE [dbo].[Book] (
 )
 GO
 
+INSERT [dbo].[Book] ([ISBN], [PubID], [CatID], [BookTitle], [BookDescription], [PubDate])
+
 /****** Object:  Table [dbo].[Author]    Script Date: 03/04/2023 ******/
 CREATE TABLE [dbo].[Author] (
     [AuthorID] [varchar] (4) NOT NULL,

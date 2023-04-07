@@ -93,8 +93,6 @@ CREATE TABLE [dbo].[Borrower](
 )
 GO
 
-
-
 /****** Object: Table [dbo].[BookLoans] Script Date: 03/04/2023 ******/
 CREATE TABLE [dbo].[BookLoans] (
 [LoanID] [int] IDENTITY(1,1) NOT NULL,
