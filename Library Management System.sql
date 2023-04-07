@@ -103,13 +103,14 @@ CREATE TABLE [dbo].[BookLoans] (
 [DueDate] [datetime2] NOT NULL,
 [ReturnedDate] [datetime2] NULL,
 [Status] char (1) NULL,
+[FineAmmount] money NULL,
+[FineStatus] varchar(15) NULL,
 CONSTRAINT [PK_BookLoans] PRIMARY KEY ([LoanID]),
 CONSTRAINT [FK_BookLoans_Book] FOREIGN KEY ([ISBN]) REFERENCES [dbo].[Book]([ISBN]),
 CONSTRAINT [FK_BookLoans_LibraryBranch] FOREIGN KEY ([BranchID]) REFERENCES [dbo].[LibraryBranch]([BranchID]),
 CONSTRAINT [FK_BookLoans_Borrower] FOREIGN KEY ([CardNo]) REFERENCES [dbo].[Borrower]([CardNo])
 )
 GO
-
 
 
 /****** Object:  Table [dbo].[BookCopies]    Script Date: 03/04/2023 ******/
@@ -124,31 +125,22 @@ CREATE TABLE [dbo].[BookCopies](
 )
 GO
 
-/****** Object:  Table [dbo].[Fine]    Script Date: 03/04/2023 ******/
-CREATE TABLE [dbo].[Fine] (
-    [FineID] [int] IDENTITY(1,1) NOT NULL,
-    [LoanID] [int] NOT NULL,
-    [FineAmmount] [money] NOT NULL,
-    CONSTRAINT [PK_Fine] PRIMARY KEY ([FineID]),
-    CONSTRAINT [FK_BookLoans] FOREIGN KEY ([LoanID]) REFERENCES [dbo].[BookLoans]([LoanID])
-)
-GO
-
 /****** Object:  Table [dbo].[ArchiveTable]    Script Date: 03/04/2023 ******/
 CREATE TABLE [dbo].[ArchiveTable] (
     [ArchiveID] [int] IDENTITY(1,1) NOT NULL,
-    [ISBN] [varchar](15) NOT NULL,
-    [BranchID] [int] NOT NULL,
-    [CardNO] [int] NOT NULL,
-    [BorrowedDate] [date] NOT NULL,
-    [DueDate] [date] NOT NULL,
-    [ReturnedDate] [date] NOT NULL,
-    [FineID] [int] NOT NULL, 
-    [FineAmmount] [money] NOT NULL,
+	[LoanID] [int],
+    [ISBN] [varchar](15) NULL,
+    [BranchID] [int] NULL,
+    [CardNO] [int] NULL,
+    [BorrowedDate] [date] NULL,
+    [DueDate] [date] NULL,
+    [ReturnedDate] [date] NULL,
+    [FineAmmount] [money] NULL,
+	[FineStatus] [varchar](15) NULL,
     CONSTRAINT [PK_ArchiveTable] PRIMARY KEY ([ArchiveID]),
-    CONSTRAINT [FK_Archive_Book] FOREIGN KEY ([ISBN]) REFERENCES [dbo].[Book]([ISBN]),
-    CONSTRAINT [FK_Archive_LibraryBranch] FOREIGN KEY ([BranchID]) REFERENCES [dbo].[LibraryBranch]([BranchID]),
-    CONSTRAINT [FK_Archive_Borrower] FOREIGN KEY ([CardNo]) REFERENCES [dbo].[Borrower]([CardNo]),
-    CONSTRAINT [FK_Archive_Fine] FOREIGN KEY ([FineID]) REFERENCES [dbo].[Fine]([FineID])
 )
 GO
+
+
+
+

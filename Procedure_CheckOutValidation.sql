@@ -50,7 +50,7 @@ FROM BookLoans bl JOIN Book b ON bl.ISBN = b.ISBN
 			ORDER BY ISBN
 
 --Query to Check how many books are available
-SELECT bl.ISBN, b.BookTitle, bc.NumOfCopies, (bc.NumOfCopies - COUNT(bl.ISBN)) AS 'Units Available', bc.Status
+SELECT bl.ISBN, b.BookTitle, bc.NumOfCopies 'Units Available', bc.Status
 FROM BookLoans bl JOIN BookCopies bc ON bl.ISBN = bc.ISBN
 				  JOIN Book b ON bl.ISBN = b.ISBN
 GROUP BY bl.ISBN, bc.NumOfCopies, bc.Status, b.BookTitle;

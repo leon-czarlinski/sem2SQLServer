@@ -191,44 +191,37 @@ VALUES ('Davis', 'Emma', '456 Park Ave', 'Denver', 'CO', '80205', '303-555-6789'
 
 
 -- INSERT INTO BOOK LOANS TABLE
-INSERT INTO [dbo].[BookLoans] ([ISBN], [BranchID], [CardNo], [BorrowedDate], [DueDate], [Status])
-SELECT '9780802129965', 1, [CardNo], '2023-02-28', '2023-03-15', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'John';
 
 INSERT INTO [dbo].[BookLoans] ([ISBN], [BranchID], [CardNo], [BorrowedDate], [DueDate], [Status])
-SELECT '9780735211286', 2, [CardNo], '2023-03-05', '2023-03-20', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'Sara';
+SELECT '9780802129965', 1, [CardNo], '2023-04-10', '2023-05-08', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'John';
 
 INSERT INTO [dbo].[BookLoans] ([ISBN], [BranchID], [CardNo], [BorrowedDate], [DueDate], [Status])
-SELECT '9780143109082', 3, [CardNo], '2023-03-17', '2023-04-01', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'Michael';
+SELECT '9780735211286', 2, [CardNo], '2023-04-10', '2023-04-24', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'Sara';
 
 INSERT INTO [dbo].[BookLoans] ([ISBN], [BranchID], [CardNo], [BorrowedDate], [DueDate], [Status])
-SELECT '9780385543781', 4, [CardNo], '2023-04-06', '2023-04-21', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'Jin';
+SELECT '9780143109082', 3, [CardNo], '2023-04-10', '2023-05-08', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'Michael';
 
 INSERT INTO [dbo].[BookLoans] ([ISBN], [BranchID], [CardNo], [BorrowedDate], [DueDate], [Status])
-SELECT '9780525434194', 5, [CardNo], '2023-03-21', '2023-04-05', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'Maria';
+SELECT '9780385543781', 4, [CardNo], '2023-04-10', '2023-04-24', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'Jin';
 
 INSERT INTO [dbo].[BookLoans] ([ISBN], [BranchID], [CardNo], [BorrowedDate], [DueDate], [Status])
-SELECT '9780525563542', 6, [CardNo], '2023-04-07', '2023-04-22', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'Wei';
+SELECT '9780525434194', 5, [CardNo], '2023-04-10', '2023-05-08', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'Maria';
 
 INSERT INTO [dbo].[BookLoans] ([ISBN], [BranchID], [CardNo], [BorrowedDate], [DueDate], [Status])
-SELECT '9780316463998', 7, [CardNo], '2023-03-27', '2023-04-11', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'Soo-Jin';
+SELECT '9780525563542', 6, [CardNo], '2023-04-10', '2023-04-24', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'Wei';
 
 INSERT INTO [dbo].[BookLoans] ([ISBN], [BranchID], [CardNo], [BorrowedDate], [DueDate], [Status])
-SELECT '9780593299597', 8, [CardNo], '2023-03-27', '2023-04-11', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'Ling';
+SELECT '9780316463998', 7, [CardNo], '2023-04-10', '2023-05-08', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'Soo-Jin';
 
 INSERT INTO [dbo].[BookLoans] ([ISBN], [BranchID], [CardNo], [BorrowedDate], [DueDate], [Status])
-SELECT '9780062896433', 9, [CardNo], '2023-04-01', '2023-04-16', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'Carlos';
+SELECT '9780593299597', 8, [CardNo], '2023-04-10', '2023-04-24', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'Ling';
 
 INSERT INTO [dbo].[BookLoans] ([ISBN], [BranchID], [CardNo], [BorrowedDate], [DueDate], [Status])
-SELECT '9780143108252', 10, [CardNo], '2023-03-31', '2023-04-15', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'Emma';
+SELECT '9780062896433', 9, [CardNo], '2023-04-10', '2023-05-08', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'Carlos';
 
 INSERT INTO [dbo].[BookLoans] ([ISBN], [BranchID], [CardNo], [BorrowedDate], [DueDate], [Status])
-SELECT '9780735211286', 2, [CardNo], '2023-04-01', '2023-04-16', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'Carlos';
+SELECT '9780143108252', 10, [CardNo], '2023-04-10', '2023-04-24', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'Emma';
 
-INSERT INTO [dbo].[BookLoans] ([ISBN], [BranchID], [CardNo], [BorrowedDate], [DueDate], [Status])
-SELECT '9780735211286', 2, [CardNo], '2023-04-06', '2023-04-21', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'Jin';
-
-INSERT INTO [dbo].[BookLoans] ([ISBN], [BranchID], [CardNo], [BorrowedDate], [DueDate], [Status])
-SELECT '9780593299597', 8, [CardNo], '2023-04-07', '2023-04-22', 'B' FROM [dbo].[Borrower] WHERE [BorrowerFName] = 'Wei';
 
 -- INSERT INTO BOOK COPIES TABLE
 
@@ -260,7 +253,7 @@ INSERT INTO [dbo].[BookCopies] ([ISBN], [BranchID], [NumOfCopies], [Status])
 VALUES ('9780062896433', 9, 3, 'Available');
 
 INSERT INTO [dbo].[BookCopies] ([ISBN], [BranchID], [NumOfCopies], [Status])
-VALUES ('9780143108252', 10, 2, 'Available');
+VALUES ('9780143108252', 10, 1, 'Available');
 
 
 -- INSERT INTO FINES TABLE

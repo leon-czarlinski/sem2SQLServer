@@ -1,66 +1,65 @@
-CREATE OR ALTER TRIGGER Returnbook
+USE LibraryManagementSystem
+GO
+
+CREATE OR ALTER TRIGGER Trigger_BookLoanReturn
 ON BookLoans
 AFTER UPDATE
 AS
+BEGIN
+	IF UPDATE(ReturnedDate) 
 	BEGIN
-	IF EXISTS(
-		SELECT 1
-		FROM inserted where inserted.ReturnedDate IS NOT NULL)
+		IF EXISTS (SELECT 1 FROM inserted 
+			WHERE inserted.ReturnedDate IS NOT NULL AND inserted.Status = 'R')
 		BEGIN
-				UPDATE BookLoans
-				SET Status = 'R'
-				FROM inserted JOIN BookLoans ON BookLoans.LoanID = inserted.LoanID
-				WHERE inserted.ReturnedDate IS NOT NULL
-				AND BookLoans.ReturnedDate IS NULL
-
-				UPDATE BookCopies
-				SET NumOfCopies = NumOfCopies + 1, Status = 'Available'
-				FROM inserted JOIN BookCopies ON BookCopies.ISBN = inserted.ISBN
-				AND inserted.BranchID = BookCopies.BranchID
-				WHERE inserted.ReturnedDate IS NULL
-
-				DECLARE @CheckLate INT
-				DECLARE @DueDate DateTime2
-				SELECT @DueDate = DueDate FROM BookLoans WHERE LoanID = inserted.LoanID
-				SET @CheckLate = DATEDIFF(day, @DueDate, GETDATE())
-
-				SELECT 1 From BookLoans 
-
-				UPDATE Fine
-		END;
-		BEGIN
-			RAISERROR ('Book already returned', 16, 1)
-			ROLLBACK TRANSACTION
-			RETURN
+			RAISERROR('Book is already returned!!',16,1);
+			ROLLBACK TRANSACTION;
+			RETURN;
 		END
+
+		IF EXISTS (SELECT 1 FROM inserted WHERE ReturnedDate < BorrowedDate)
+		BEGIN
+			RAISERROR('Returned date cannot be less than borrowed date!!',16,1);
+			ROLLBACK TRANSACTION;
+			RETURN;
+		END
+
+		UPDATE BookCopies
+		SET NumOfCopies = NumOfCopies + 1,
+		Status = 'Available'
+		FROM BookCopies JOIN inserted
+		ON BookCopies.BranchID = inserted.BranchID
+		AND BookCopies.ISBN = inserted.ISBN
+		WHERE inserted.Status = 'B' AND inserted.ReturnedDate IS NOT NULL;
+		
+		UPDATE BookLoans
+		SET Status = 'R'
+		FROM BookLoans INNER JOIN inserted
+		ON BookLoans.LoanID = inserted.LoanID
+		WHERE inserted.ReturnedDate IS NOT NULL;
 	END
-
-
-
-
-
--- change status to R
--- change data on BookCopies
--- Calculate fine and populate Fine if there is a fine
+END
+GO
 
 UPDATE BookLoans
-SET ReturnedDate =  '2023-04-07'
-WHERE loanID = 6
+SET ReturnedDate = GETDATE()
+WHERE loanID = 13
 
 
 SELECT *
 FROM BookCopies
 
-	SELECT *
-	FROM BookLoans
+SELECT *
+FROM BookLoans
 
 SELECT *
 FROM Fine
 
-SELECT COUNT(isbn)
+SELECT loanID, BORROWEDDATE, DUEDATE, ReturnedDate, DATEDIFF(day, DueDate, getdate()) AS DaysOverdue, Status
 FROM BookLoans
-where isbn = '9780062896433'
+ORDER BY DueDate asc;
 
-9780525434194
-9780593299597
-9780735211286
+INSERT INTO [dbo].[Fine] ([LoanID], [FineAmmount])
+VALUES (24, 18);
+
+
+DROP TABLE Fine

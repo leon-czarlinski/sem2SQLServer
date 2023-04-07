@@ -94,5 +94,3 @@ ORDER BY DueDate asc;
 select *
 from Fine
 
-select *
-from BookLoans
