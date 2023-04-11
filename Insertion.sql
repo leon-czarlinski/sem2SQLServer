@@ -236,7 +236,7 @@ INSERT INTO [dbo].[BookCopies] ([ISBN], [BranchID], [NumOfCopies], [Status])
 VALUES ('9780802129965', 1, 5, 'Available');
 
 INSERT INTO [dbo].[BookCopies] ([ISBN], [BranchID], [NumOfCopies], [Status])
-VALUES ('9780735211286', 2, 3, 'Checked Out');
+VALUES ('9780735211286', 2, 0, 'Checked Out');
 
 INSERT INTO [dbo].[BookCopies] ([ISBN], [BranchID], [NumOfCopies], [Status])
 VALUES ('9780143109082', 3, 2, 'Available');
@@ -245,7 +245,7 @@ INSERT INTO [dbo].[BookCopies] ([ISBN], [BranchID], [NumOfCopies], [Status])
 VALUES ('9780385543781', 4, 6, 'Available');
 
 INSERT INTO [dbo].[BookCopies] ([ISBN], [BranchID], [NumOfCopies], [Status])
-VALUES ('9780525434194', 5, 1, 'Checked Out');
+VALUES ('9780525434194', 5, 0, 'Checked Out');
 
 INSERT INTO [dbo].[BookCopies] ([ISBN], [BranchID], [NumOfCopies], [Status])
 VALUES ('9780525563542', 6, 4, 'Available');
@@ -254,7 +254,7 @@ INSERT INTO [dbo].[BookCopies] ([ISBN], [BranchID], [NumOfCopies], [Status])
 VALUES ('9780316463998', 7, 7, 'Available');
 
 INSERT INTO [dbo].[BookCopies] ([ISBN], [BranchID], [NumOfCopies], [Status])
-VALUES ('9780593299597', 8, 2, 'Checked Out');
+VALUES ('9780593299597', 8, 0, 'Checked Out');
 
 INSERT INTO [dbo].[BookCopies] ([ISBN], [BranchID], [NumOfCopies], [Status])
 VALUES ('9780062896433', 9, 3, 'Available');
