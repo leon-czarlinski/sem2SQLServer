@@ -1,4 +1,5 @@
-	
+	USE LibraryManagementSystem
+
 	CREATE OR ALTER TRIGGER BookLoansDelete
 	ON BookLoans
 	AFTER DELETE
@@ -9,13 +10,26 @@
 				FROM deleted
 				WHERE deleted.Status = 'B')
 			BEGIN
-				RAISERROR ('Borrowed books can not be deleted', 16, 1)
+				RAISERROR ('Borrowed books can not 
+							be deleted', 16, 1)
 				ROLLBACK TRANSACTION 
 				RETURN
 			END
-			INSERT INTO ArchiveTable(LoanID, ISBN, BranchID, CardNo, 
-						BorrowedDate, DueDate, ReturnedDate,
-						FineAmmount, FineStatus)
+
+			IF EXISTS (
+				SELECT 1
+				FROM deleted
+				WHERE deleted.FineStatus = 'Unpaid')
+			BEGIN
+				RAISERROR ('Books with fines to be paid 
+							can not be deleted', 16, 1)
+				ROLLBACK TRANSACTION 
+				RETURN
+			END
+
+			INSERT INTO ArchiveTable(LoanID, ISBN, BranchID, 
+						CardNo, BorrowedDate, DueDate, 
+						ReturnedDate, FineAmmount, FineStatus)
  			SELECT d.LoanID, d.ISBN, d.BranchID, d.CardNo, 
 				  d.BorrowedDate, d.DueDate, GETDATE(), 
 				  d.FineAmmount, d.FineStatus
@@ -23,7 +37,7 @@
 		END
 
 	DELETE FROM BookLoans
-	WHERE LoanID = 26;
+	WHERE LoanID = 29;
 
 	SELECT * FROM  BookLoans;
 

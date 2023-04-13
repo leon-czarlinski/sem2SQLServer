@@ -61,7 +61,7 @@ GO
 
 UPDATE BookLoans
 SET ReturnedDate = GETDATE()
-WHERE loanID = 14
+WHERE loanID = 28
 
 
 SELECT *
